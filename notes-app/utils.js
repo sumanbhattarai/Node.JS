@@ -1,11 +1,18 @@
 
-console.log('Util.js');
+// console.log('Util.js');
 
-const name = "Suman Bhattarai" ;
+// const name = "Suman Bhattarai" ;
 
-const add = function (a , b)
+// const add = function (a , b)
+// {
+//     return a + b ;
+// }
+
+// module.exports = add ;
+
+const getNotes = function ()
 {
-    return a + b ;
+    return 'this notes .... '
 }
 
-module.exports = add ;
+module.exports = getNotes
