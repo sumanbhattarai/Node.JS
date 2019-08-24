@@ -14,7 +14,7 @@
 // console.log(sum(2,3));
 
 
-// const getNotes  = require('./utils.js')
+const notes  = require('./notes.js')
 
 // console.log(getNotes())
 
@@ -26,8 +26,13 @@
 
 const chalk = require('chalk')
 
-console.log(chalk.green('Success !'))
-console.log(chalk.bgGreen.white('Success !'))
-console.log(chalk.red('My name') + ' is ' + chalk.bgGreen.red('Suman Bhattarai'))
-console.log(chalk.green.bold('Done'))
-console.log(chalk.bold('Okay'))
+// console.log(chalk.green('Success !'))
+// console.log(chalk.bgGreen.white('Success !'))
+// console.log(chalk.red('My name') + ' is ' + chalk.bgGreen.red('Suman Bhattarai'))
+// console.log(chalk.green.bold('Done'))
+// console.log(chalk.bold('Okay'))
+
+//console.log(process.argv) 
+// argv[0] is for the path to the nodeJs executable on your machine
+// argv[1] is for the path to our app.js
+ 
