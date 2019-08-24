@@ -14,6 +14,12 @@
 // console.log(sum(2,3));
 
 
-const getNotes  = require('./utils.js')
+// const getNotes  = require('./utils.js')
 
-console.log(getNotes())
+// console.log(getNotes())
+
+
+const validator = require('validator')
+
+console.log(validator.isEmail('sumanbhattaraiofficial@gmail.com'))
+console.log(validator.isURL('https://sbofficial.me'))
