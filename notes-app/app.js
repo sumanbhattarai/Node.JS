@@ -36,20 +36,23 @@ const chalk = require('chalk')
 // argv[0] is for the path to the nodeJs executable on your machine
 // argv[1] is for the path to our app.js
  
-const command  = process.argv[2]
-if(command == 'add')
-{
-    console.log('Adding note')
-}
-else if (command == 'read')
-{
-    console.log('Reading a note ')
-}
-else if (command =='delete')
-{
-    console.log('Deleting a note')
-}
-else
-{
-    console.log('Command not found')
-}
+// const command  = process.argv[2]
+// if(command == 'add')
+// {
+//     console.log('Adding note')
+// }
+// else if (command == 'read')
+// {
+//     console.log('Reading a note ')
+// }
+// else if (command =='delete')
+// {
+//     console.log('Deleting a note')
+// }
+// else
+// {
+//     console.log('Command not found')
+// }
+
+const yargs = require('yargs')
+console.log(yargs.argv)
