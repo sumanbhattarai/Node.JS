@@ -55,4 +55,41 @@ const chalk = require('chalk')
 // }
 
 const yargs = require('yargs')
+
+//Creating add command
+
+yargs.command({
+    command : 'add',
+    description : 'Add a new note',
+    handler : function(){
+        console.log('Adding a new note ..... ')
+    }
+})
+
+//creatind remove command
+yargs.command({
+    command : 'remove' ,
+    description : 'Remove a note' ,
+    handler : function(){
+        console.log('Removing a note .....')
+    }
+})
+
+//Creating list command
+yargs.command({
+    command : 'list' ,
+    description : 'List a note' ,
+    handler : function(){
+        console.log('Listing a note .....')
+    }
+})
+
+//Creating read command 
+yargs.command({
+    command : 'read' ,
+    description : 'Read a note' ,
+    handler : function(){
+        console.log("Reading a note .....")
+    }
+})
 console.log(yargs.argv)
