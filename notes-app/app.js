@@ -19,7 +19,13 @@
 // console.log(getNotes())
 
 
-const validator = require('validator')
+// const validator = require('validator')
 
-console.log(validator.isEmail('sumanbhattaraiofficial@gmail.com'))
-console.log(validator.isURL('https://sbofficial.me'))
+// console.log(validator.isEmail('sumanbhattaraiofficial@gmail.com'))
+// console.log(validator.isURL('https://sbofficial.me'))
+
+const chalk = require('chalk')
+
+console.log(chalk.green('Success !'))
+console.log(chalk.bgGreen.white('Success !'))
+console.log(chalk.red('My name') + ' is ' + chalk.bgGreen.red('Suman Bhattarai'))
