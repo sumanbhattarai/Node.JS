@@ -14,9 +14,9 @@
 // console.log(sum(2,3));
 
 
-const notes  = require('./notes.js')
+const getNotes  = require('./notes.js')
 
-// console.log(getNotes())
+console.log(getNotes())
 
 
 // const validator = require('validator')

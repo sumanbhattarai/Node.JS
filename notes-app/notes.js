@@ -10,9 +10,9 @@
 
 // module.exports = add ;
 
-// const getNotes = function ()
-// {
-//     return 'this notes .... '
-// }
+const getNotes = function ()
+{
+    return 'this notes .... '
+}
 
-// module.exports = getNotes
+module.exports = getNotes
