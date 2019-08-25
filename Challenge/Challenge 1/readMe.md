@@ -1,13 +1,15 @@
 
-task.json contains these data  : 
+> task.json contains these data  : 
 
+```javascript
 {
     "name":"asdfasdfasd",
     "planet":"Earth",
     "age":2342
 }
+```
 
-Now do the following :
+> Now do the following :
 
 - Load and parse the task.json in sol.json
 - Change the name and age as you like
