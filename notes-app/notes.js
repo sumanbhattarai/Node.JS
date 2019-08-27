@@ -46,7 +46,18 @@ const listingNotes = ()=> {
 }
 
 const readNote = (title)=> {
-    console.log("You are reading " + chalk.blue(title))
+    const note = loadNote();
+    const noteToRead = note.find((note)=> note.title === title)
+    if(noteToRead)
+    {
+        console.log("You are reading " + chalk.blue(title)+'.......')
+        console.log(noteToRead.body) 
+    }
+    else
+    {
+        console.log(chalk.red(`No any note with title '${title}' existed`))
+    }
+
 }
 
 const saveNote = (note) => {
