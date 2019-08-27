@@ -45,6 +45,10 @@ const listingNotes = ()=> {
     });
 }
 
+const readNote = (title)=> {
+    console.log("You are reading " + chalk.blue(title))
+}
+
 const saveNote = (note) => {
     const dataJSON = JSON.stringify(note)
     fs.writeFileSync('note.json' , dataJSON)
@@ -67,5 +71,6 @@ module.exports =  {
     getNotes : getNotes ,
     addNote : addNote ,
     removeNote : removeNote,
-    listingNotes : listingNotes
+    listingNotes : listingNotes,
+    readNote : readNote
 }
