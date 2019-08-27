@@ -6,8 +6,8 @@ const getNotes = ()=> 'this notes .... '
 
 const addNote = (title , body) => {
     const note = loadNote()
-    const duplicate = note.filter((note) =>note.title === title )
-    if(duplicate.length === 0){
+    const duplicate = note.find((note) =>note.title === title )
+    if(!duplicate){
         console.log(chalk.green('Note is added.'))
         note.push({
             title: title,
