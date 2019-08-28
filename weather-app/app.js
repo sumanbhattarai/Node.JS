@@ -9,3 +9,15 @@ request({url : url , json: true} , (error , response)=>{
     console.log(`Today's temperature is ${currently.temperature} degree Celcius and chance to rain is ${currently.precipProbability}% .`)
     console.log(`${chalk.yellow.inverse('Conclusion')} : ${chalk.red(daily.data[0].summary)}`)
 })
+
+// GeoCoding
+const geoUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1Ijoic3VtYW5iaGF0dGFyYWkiLCJhIjoiY2p6d25xN3ozMGFxMDNjcGFrM3l4YThjcyJ9.7x5EkAOcW3wCzfbqmVfinA&limit=1' ;
+request({url : geoUrl , json:true} , (error , response)=>{
+    const latitude = response.body.features[0].center[1]
+    const longitude = response.body.features[0].center[0]
+    console.log(`Latitude is ${latitude}`)
+    console.log(`Longitude is ${longitude}`)
+
+
+
+} )
