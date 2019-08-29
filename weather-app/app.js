@@ -7,7 +7,9 @@ request({url : url , json: true} , (error , response)=>{
     if(error){
        console.log(`${chalk.red('Unable to connect to Dark Sky API.')}`) 
     }
-    else{
+    else if(response.body.error){
+        console.log(`${chalk.red('Unable to find location.')}`)
+    }else{
         const currently = response.body.currently
         const daily = response.body.daily
         console.log(`Today's temperature is ${currently.temperature} degree Celcius and chance to rain is ${currently.precipProbability}% .`)
@@ -16,12 +18,13 @@ request({url : url , json: true} , (error , response)=>{
 })
 
 // GeoCoding
-const geoUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1Ijoic3VtYW5iaGF0dGFyYWkiLCJhIjoiY2p6d25xN3ozMGFxMDNjcGFrM3l4YThjcyJ9.7x5EkAOcW3wCzfbqmVfinA&limit=1' ;
+const geoUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/whatsdfsaasd.json?access_token=pk.eyJ1Ijoic3VtYW5iaGF0dGFyYWkiLCJhIjoiY2p6d25xN3ozMGFxMDNjcGFrM3l4YThjcyJ9.7x5EkAOcW3wCzfbqmVfinA&limit=1' ;
 request({url : geoUrl , json:true} , (error , response)=>{
     if(error){
        console.log(`${chalk.red('Unable to connect to Map Box API.')}`) 
-    }
-    else {
+    } else if(response.body.features.length == 0){
+        console.log(`${chalk.red('Unable to find location.')}`)
+    } else {
         const latitude = response.body.features[0].center[1]
         const longitude = response.body.features[0].center[0]
         console.log(`Latitude is ${latitude}`)
