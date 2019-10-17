@@ -26,19 +26,49 @@ request({url : url , json : true} , (error , response)=>{
 })
 
 // geocoding.
-const urlGeo = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1Ijoic3VtYW5iaGF0dGFyYWkiLCJhIjoiY2sxc3plbHpqMDA5dTNjcXM0ZnNldmV6biJ9.h3Oq798TEzuOq1t06fXM9A&limit=1'
-request({url : urlGeo , json: true} , (error , response)=>{
-    if(error)
-    {
-        console.log(`${chalk.red('Unable to connect to Map box API')}`)
-    }
-    else if (response.body.features.length === 0)
-    {
-        console.log(`${chalk.red('Unable to find the location.')}`)
-    }
-    else
-    {
-        console.log(`Los angeles co-ordinate is ${chalk.yellow(response.body.features[0].center[0])}, ${chalk.yellow(response.body.features[0].center[1])}`)
-    }
+// const urlGeo = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1Ijoic3VtYW5iaGF0dGFyYWkiLCJhIjoiY2sxc3plbHpqMDA5dTNjcXM0ZnNldmV6biJ9.h3Oq798TEzuOq1t06fXM9A&limit=1'
+// request({url : urlGeo , json: true} , (error , response)=>{
+//     if(error)
+//     {
+//         console.log(`${chalk.red('Unable to connect to Map box API')}`)
+//     }
+//     else if (response.body.features.length === 0)
+//     {
+//         console.log(`${chalk.red('Unable to find the location.')}`)
+//     }
+//     else
+//     {
+//         console.log(`Los angeles co-ordinate is ${chalk.yellow(response.body.features[0].center[0])}, ${chalk.yellow(response.body.features[0].center[1])}`)
+//     }
 
+// })
+
+const geoCode = ( address , callback )=>{
+    const urlGeo = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+ encodeURIComponent(address) +'.json?access_token=pk.eyJ1Ijoic3VtYW5iaGF0dGFyYWkiLCJhIjoiY2sxc3plbHpqMDA5dTNjcXM0ZnNldmV6biJ9.h3Oq798TEzuOq1t06fXM9A&limit=1'
+    request( {url : urlGeo , json : true} , (error , response)=>{
+        if(error)
+        {
+            callback('Unable to connect to Map box API' , undefined)
+
+        }
+        else if (response.body.features.length === 0)
+        {
+            callback('Unable to find the location.' , undefined)
+        }
+        else
+        {
+            callback(undefined , {
+                latitude : response.body.features[0].center[0] ,
+                logitutde : response.body.features[0].center[1] ,
+                place : response.body.features[0].place_name
+            })
+        }
+
+    } )
+    
+}
+
+geoCode('Bharatpur Nepal' , (error , data)=>{
+    console.log('Error : ' ,  error )
+    console.log('Data : ' ,  data)
 })
