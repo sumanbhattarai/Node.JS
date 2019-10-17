@@ -3,10 +3,14 @@ const chalk = require('chalk') // to ouput with color in terminal
 const geoCode = require('./utils/geoCode.js')
 const getWeather = require('./utils/getWeather.js')
 
-
+const address = process.argv[2]
+if(!address)
+{
+    return console.log(chalk.red('Please provide an address'))
+}
 
 // GeoCoding
-geoCode('Bharatpur Nepal' , (error , data)=>{
+geoCode(address , (error , data)=>{
     if(error)
     {
         return console.log(chalk.red(error))
@@ -19,7 +23,7 @@ geoCode('Bharatpur Nepal' , (error , data)=>{
             return console.log(chalk.red(error))
         }
 
-        console.log(`It is ${chalk.yellow(data.temperature)} degree Celcuis. There is ${chalk.yellow(data.humidity)} % chance of raining.`)
+        console.log(`It is ${chalk.yellow(data.temperature)} degree Celcuis. There is ${chalk.yellow(data.humidity)} chance of raining.`)
         
 
     })
