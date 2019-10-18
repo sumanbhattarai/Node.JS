@@ -10,20 +10,20 @@ if(!address)
 }
 
 // GeoCoding
-geoCode(address , (error , data)=>{
+geoCode(address , (error , {longitude , latitude , place})=>{
     if(error)
     {
         return console.log(chalk.red(error))
     }
-    console.log(`Location : ${chalk.yellow(data.place)}`)
+    console.log(`Location : ${chalk.yellow(place)}`)
     // Fetching weather forecast
-    getWeather (data.latitude  , data.longitude , (error , data)=>{
+    getWeather (latitude  ,longitude , (error , {temperature , humidity})=>{
         if(error)
         {
             return console.log(chalk.red(error))
         }
 
-        console.log(`It is ${chalk.yellow(data.temperature)} degree Celcuis. There is ${chalk.yellow(data.humidity)} chance of raining.`)
+        console.log(`It is ${chalk.yellow(temperature)} degree Celcuis. There is ${chalk.yellow(humidity)} chance of raining.`)
         
 
     })
