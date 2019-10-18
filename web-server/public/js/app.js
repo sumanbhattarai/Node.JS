@@ -1,16 +1,24 @@
 
 console.log('Client side JS')
-fetch('http://localhost:3000/weather?address=chitwan').then((response)=>{
+
+
+const formData = document.querySelector('form')
+formData.addEventListener('submit'  , (e)=>{
+    e.preventDefault()
+    let address = document.querySelector('#address').value
+
+    fetch('http://localhost:3000/weather?address='+address).then((response)=>{
     response.json().then((data)=>{
         if(data.error)
         {
-            console.log('Something went wrong')
+            console.log(data.error)
         }
         else
         {
             console.log(data)
         }
     })
+})
 })
 
  
