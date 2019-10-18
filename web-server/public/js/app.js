@@ -21,7 +21,7 @@ formData.addEventListener('submit'  , (e)=>{
         else
         {
             document.querySelector('#output-0').innerHTML = ''
-            document.querySelector('#output-1').innerHTML = "Temperature : " + data.temperature
+            document.querySelector('#output-1').innerHTML = "Temperature : " + data.temperature + " degree Celcius."
             document.querySelector('#output-2').innerHTML = "Probability of Raining : " + data.humidity
             document.querySelector('#output-3').innerHTML =  "Location : " + data.place
 
