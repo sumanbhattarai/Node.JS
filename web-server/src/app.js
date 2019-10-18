@@ -1,23 +1,23 @@
 
 const express = require('express')
+const path = require('path')
 
 const app = express()
 
+const pathDirectory = path.join(__dirname , '../public')
+
+//setup handlebars engine and views location
+app.set('view engine' , 'hbs')
+app.set('views' , path.join(__dirname , '../views'))
+
+// setup static directory to serve
+app.use(express.static(pathDirectory))
+
 app.get('' , (req , res)=>{
-    res.send('Homepage')
+    res.render('index')
+
 })
 
-app.get('/about' , (req, res)=>{
-    res.send('About')
-})
-
-app.get('/skill' , (req, res)=>{
-    res.send('Skill')
-})
-
-app.get('/contact' , (req, res)=>{
-    res.send('Contact')
-})
 
 app.listen(3000 , ()=>{
     console.log('Server is running at port 3000.')
