@@ -31,3 +31,14 @@ console.log(rating) //undefined
 
 const { infoName: newName } = info
 console.log(newName)
+
+
+// Destructuring objects in argumnets
+
+const demo = ( name , {infoAge: userAge})=> {
+    console.log(name)
+    console.log(userAge)
+
+}
+
+demo('Suman' , info) //info is an object
