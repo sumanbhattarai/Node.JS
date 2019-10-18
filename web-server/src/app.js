@@ -21,9 +21,34 @@ app.use(express.static(pathDirectory))
 
 app.get('' , (req , res)=>{
     res.render('index' ,{
-        name : 'Weather Application'
+        name : 'Homepage'
     })
 
+})
+
+app.get('/about' , (req , res)=>{
+    res.render('about' , {
+        name : 'About Section' ,
+        creatorName : 'Suman Bhattarai'
+    })
+})
+
+app.get('/weather' , (req , res)=>{
+    res.render('weather' , {
+        name : 'Weather Forecast'
+
+    })
+})
+
+app.get('/help' , (req , res)=>{
+    res.render('help' , {
+        name : 'Help Section'
+    })
+
+})
+
+app.get('*' , (req , res)=>{
+    res.send('404 page not found.')
 })
 
 
