@@ -3,9 +3,13 @@ const express = require('express')
 const path = require('path')
 const hbs = require('hbs')
 
+const geoCode = require('./utils/geoCode')
+const getWeather = require('./utils/getWeather')
+
+
 const app = express()
 
-// Defining path
+// Defining path 
 const pathDirectory = path.join(__dirname , '../public')
 const viewsPath = path.join(__dirname , '../templates/views')
 const partialsPath = path.join(__dirname , '../templates/partial')
@@ -21,7 +25,7 @@ app.use(express.static(pathDirectory))
 
 app.get('' , (req , res)=>{
     res.render('index' ,{
-        name : 'Homepage'
+        name : 'Use this site to forecast the weather.'
     })
 
 })
@@ -34,10 +38,36 @@ app.get('/about' , (req , res)=>{
 })
 
 app.get('/weather' , (req , res)=>{
-    res.render('weather' , {
-        name : 'Weather Forecast'
-
+    if(!req.query.address){
+        return res.send({
+            error : 'Please, provide an address'
+        })
+    }
+    geoCode(req.query.address , (error , {longitude , latitude , place}={})=>{
+        if(error)
+        {
+            return res.send({
+                error
+            })
+        }
+        getWeather (latitude  ,longitude , (error , {temperature , humidity})=>{
+            if(error)
+            {
+                return res.send({
+                   error
+                })
+            }
+    
+            return res.send({
+                temperature ,
+                humidity ,
+                place
+            })
+            
+    
+        })
     })
+ 
 })
 
 app.get('/help' , (req , res)=>{
