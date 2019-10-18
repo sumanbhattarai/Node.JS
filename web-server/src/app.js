@@ -47,8 +47,28 @@ app.get('/help' , (req , res)=>{
 
 })
 
+app.get('/about/*' , (req , res)=>{
+    res.render('404' , {
+        section : 'About Section'
+    })
+})
+
+app.get('/weather/*' , (req , res)=>{
+    res.render('404' , {
+        section : 'Weather Section'
+    })
+})
+
+app.get('/help/*' , (req , res)=>{
+    res.render('404' , {
+        section : 'Help Section'
+    })
+})
+
 app.get('*' , (req , res)=>{
-    res.send('404 page not found.')
+    res.render('404' , {
+        section : "Weather App"
+    })
 })
 
 
